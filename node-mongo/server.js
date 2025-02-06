@@ -9,10 +9,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 // Connecting to the database
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.DATABASE);
 mongoose.connection
   .on("open", () => {
     console.log("Mongoose connection open");
@@ -27,6 +24,5 @@ require("./app/routes/inventory.router.js")(app);
 const server = app.listen(8080, function () {
   const host = server.address().address;
   const port = server.address().port;
-  console.log(server);
   console.log("App listening at http://%s:%s", host, port);
 });
